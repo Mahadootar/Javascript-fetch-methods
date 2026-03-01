@@ -5,6 +5,29 @@ async function loadData(path=""){
    console.log(responseToJson);
 }
 
+// meine übungen 
+function onLoadFunc(){
+    console.log('test');
+    postDataFunc("/name/users/user2", {ismael: "age 25"});
+    
+
+}
+
+const BASE_URL = "https://remotestoragetest-14149-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function postDataFunc(path="", data={}){
+    let response = await fetch(BASE_URL + path + ".json",{
+        method : "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return responseToJson = await response.json();
+    
+
+}
+
 // wie man was in den firebase schreibt Post macht 
 async function postDataFunc(path="", data={}){
     let response = await fetch(BASE_URL + path + ".json",{
@@ -42,3 +65,24 @@ async function putDataFunc(path="", data){
     });
 
 }
+
+
+// async function onLoadFunc(){
+//     let userResponse = await getAllUsers('namen');
+
+//     await adEditSingelUsers();
+// }
+
+// async function putData(path="", data={}){
+    
+// }
+
+// async function adEditSingelUsers(id=11, user={name: 'mahad'}){
+//     putData(`name/${id}`, user, data={})
+// }
+
+// async function getAllUsers(){
+//     let response = await fetch(BASE_URL + path + ".json",{
+
+//     })
+// }
