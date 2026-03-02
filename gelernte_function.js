@@ -67,22 +67,51 @@ async function putDataFunc(path="", data){
 }
 
 
-// async function onLoadFunc(){
-//     let userResponse = await getAllUsers('namen');
+async function onLoadFunc(){
+    let userResponse = await getAllUsers('namen');
 
-//     await adEditSingelUsers();
-// }
+    await adEditSingelUsers();
+}
 
-// async function putData(path="", data={}){
+async function putData(path="", data={}){
     
-// }
+}
 
-// async function adEditSingelUsers(id=11, user={name: 'mahad'}){
-//     putData(`name/${id}`, user, data={})
-// }
+async function adEditSingelUsers(id=11, user={name: 'mahad'}){
+    putData(`name/${id}`, user, data={})
+}
 
-// async function getAllUsers(){
-//     let response = await fetch(BASE_URL + path + ".json",{
+async function getAllUsers(){
+    let response = await fetch(BASE_URL + path + ".json",{
 
-//     })
-// }
+    })
+}
+
+
+async function postDataFunc(path="", data={}){
+    let response = await fetch(BASE_URL + path + ".json",{
+        method : "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+     console.log("FETCH STATUS:", response.status);
+    
+
+}
+
+
+async function addName(id, name) {
+    const response = await fetch(BASE_URL + "namen.json", {
+        method: "PATCH",          // 👈 WICHTIG
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            [id]: name
+        })
+    });
+
+    console.log("STATUS:", response.status);
+}
